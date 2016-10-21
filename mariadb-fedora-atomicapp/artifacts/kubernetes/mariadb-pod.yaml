@@ -1,5 +1,4 @@
 apiVersion: v1
-kind: Pod
 spec:
   containers:
     - resources:
@@ -8,11 +7,13 @@ spec:
       name: mariadb
       image: $image
       env:
-        - name: NAME
+        - name: MYSQL_ROOT_PASSWORD
+          value: $root_pass
+        - name: MYSQL_DATABASE
           value: $db_name
-        - name: USER
+        - name: MYSQL_USER
           value: $db_user
-        - name: PASS
+        - name: MYSQL_PASSWORD
           value: $db_pass
       ports:
         - containerPort: 3306
@@ -20,3 +21,4 @@ metadata:
   name: mariadb
   labels:
     name: mariadb
+kind: Pod

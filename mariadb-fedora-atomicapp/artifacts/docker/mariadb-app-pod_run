@@ -1,1 +1,1 @@
-docker run -d --name mariadb-app -p 3306:3306 -e 'USER=$db_user' -e 'PASS=$db_pass' -e 'NAME=$db_name' $image
+docker run -d --name mariadb-atomicapp-app -p 3306:3306 -e MYSQL_USER=$db_user -e MYSQL_ROOT_PASSWORD=$root_pass -e MYSQL_PASSWORD=$db_pass -e MYSQL_DATABASE=$db_name $image
