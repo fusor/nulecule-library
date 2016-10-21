@@ -26,6 +26,7 @@ graph:
       kubernetes:
         - file://artifacts/kubernetes/postgresql-pod.yaml
         - file://artifacts/kubernetes/postgresql-service.yaml
+        - file://artifacts/openshift/volume.yaml
       openshift:
         - inherit:
           - kubernetes
