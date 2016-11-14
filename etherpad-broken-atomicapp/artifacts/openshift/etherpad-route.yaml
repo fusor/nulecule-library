@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: etherpad-route
+  labels:
+    name: etherpad-route
+spec:
+  host: $endpoint
+  to:
+    kind: Service
+    name: etherpad-svc
