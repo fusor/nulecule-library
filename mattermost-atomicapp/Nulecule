@@ -1,0 +1,47 @@
+---
+specversion: 0.0.2
+id: mattermost-atomicapp
+
+metadata:
+  name: Mattermost Atomic App
+  appversion: 1.0.0
+  description: The Mattermost App
+  location: mattermost
+
+params:
+    - name: provider
+      description: The specified default provider.
+      default: openshift
+
+graph:
+  - name: mariadb-fedora-atomicapp
+    source: docker://fusordevel/mariadb-fedora-atomicapp
+  - name: mattermost
+    params:
+      - name: image
+        description: The container image for mattermost
+        default: jmontleon/mattermost
+      - name: endpoint
+        description: The route used to access etherpad application
+        default: mattermost.cap.example.com
+      - name: hostport
+        description: The host TCP port as the external endpoint
+        default: 8065
+      - name: DRIVER_NAME
+        description: database driver name
+        default: mysql
+      - name: DATABASE_SERVICE_NAME
+        description: database service name
+        default: mariadb
+      - name: MYSQL_USER
+        description: Database User
+      - name: MYSQL_PASSWORD
+        description: Database Password
+      - name: MYSQL_DATABASE
+        description: Database name
+    artifacts:
+      openshift:
+        - file://artifacts/openshift/pod.yaml
+        - file://artifacts/openshift/service.yaml
+        - file://artifacts/openshift/route.yaml
+        

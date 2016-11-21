@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: mattermost-svc
+  name: mattermost-svc
+spec:
+  ports:
+    - port: 80
+      targetPort: $hostport
+      name: mattermost-svc
+  selector:
+    name: mattermost
