@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  creationTimestamp: null
+  name: pv03
+spec:
+  accessModes:
+  - ReadWriteOnce
+  - ReadWriteMany
+  capacity:
+    storage: 3Gi
+  nfs:
+    path: /nfsvolumes/pv03
+    server: localhost
+  persistentVolumeReclaimPolicy: Recycle
