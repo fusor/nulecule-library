@@ -1,4 +1,4 @@
-FROM projectatomic/atomicapp:0.6.4
+FROM fusordevel/atomicapp
 
 MAINTAINER Red Hat, Inc. <container-tools@redhat.com>
 
