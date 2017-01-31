@@ -7,13 +7,20 @@ metadata:
 spec:
   containers:
     - name: postgresql
-      image: centos/postgresql
+      image: centos/postgresql-95-centos7
       env:
-        - name: DB_NAME
+        - name: POSTGRESQL_DATABASE
           value: $db_name
-        - name: DB_USER
+        - name: POSTGRESQL_USER
           value: $db_user
-        - name: DB_PASS
-          value: $db_pass
+        - name: POSTGRESQL_PASSWORD
+          value: $dp_pass
       ports:
         - containerPort: 5432
+      volumeMounts:
+        - name: postgresql-persistent-storage
+          mountPath: /var/lib/pgsql/data
+  volumes:
+    - name: postgresql-persistent-storage
+      persistentVolumeClaim:
+       claimName: postgresql-claim
